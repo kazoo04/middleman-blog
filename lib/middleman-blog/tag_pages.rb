@@ -10,7 +10,8 @@ module Middleman
         # @param [String] tag
         # @return [String]
         def link(blog_options, tag)
-          ::Middleman::Util.normalize_path(blog_options.taglink.sub(':tag', tag.parameterize))
+          parameterized_tag = tag.parameterize.empty? ? tag : tag.parameterize
+          ::Middleman::Util.normalize_path(blog_options.taglink.sub(':tag', parameterized_tag))
         end
       end
 
